@@ -66,7 +66,8 @@ schedule_dose_vaccine <- function(timestep, variables, target, dose, parameters)
       variables$zdose$queue_update(values = log(zdose_linear), index = target)
 
       # update nat based on difference between dose i and dose i - 1
-      nat <- nat + zdose_linear
+      #nat <- nat + zdose_linear
+      nat <- max(nat, zdose_linear)
 
       # transform back to natural log scale
       nat <- log(nat)
@@ -86,7 +87,8 @@ schedule_dose_vaccine <- function(timestep, variables, target, dose, parameters)
       variables$zdose$queue_update(values = log(zdose), index = target)
 
       # update NAT
-      nat <- nat + zdose
+      #nat <- nat + zdose
+      nat <- max(nat, zdose)
 
       # transform back to natural log scale
       nat <- log(nat)
@@ -104,7 +106,8 @@ schedule_dose_vaccine <- function(timestep, variables, target, dose, parameters)
     zdose_linear <- pmin(zdose_linear, exp(parameters$max_ab))
 
     # update nat based on difference between dose i and dose i - 1
-    nat <- nat + zdose_linear
+    #nat <- nat + zdose_linear
+    nat <- max(nat, zdose_linear)
 
     # transform back to natural log scale
     nat <- log(nat)

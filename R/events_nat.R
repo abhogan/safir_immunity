@@ -117,7 +117,7 @@ attach_event_listeners_natural_immunity <- function(variables, events, parameter
 #' @param parameters the parameters
 #' @param dt size of time step
 #' @export
-attach_event_listeners_independent_nat <- function(variables, events, parameters, dt) {
+attach_event_listeners_independent_nat <- function(variables, events, parameters, dt, additive = TRUE) {
 
   stopifnot(c("ab_titre_inf", "ab_titre") %in% names(variables))
   stopifnot("max_ab_inf" %in% names(parameters))
@@ -177,7 +177,11 @@ attach_event_listeners_independent_nat <- function(variables, events, parameters
       # draw NAT boost on linear scale
       inf[inf > length(mu_ab_inf)] <- length(mu_ab_inf)
       nat_boost <- 10^rnorm(n = target$size(), mean = log10(mu_ab_inf[inf]),sd = std10_infection)
-      new_nat <- current_nat + nat_boost
+      if (additive){
+        new_nat <- current_nat + nat_boost
+      } else {
+        new_nat <- max(current_nat, nat_boost)
+      }
 
       # back to ln scale, and impose max value constraint
       new_nat <- log(new_nat)

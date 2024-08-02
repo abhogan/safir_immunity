@@ -121,7 +121,9 @@ make_calculate_nat <- function(variables) {
       nat_vaccine <- variables$ab_titre$get_values(index)
       nat_infection <- variables$ab_titre_inf$get_values(index)
       # add them for single effect
-      nat <- exp(nat_vaccine) + exp(nat_infection)
+      #nat <- exp(nat_vaccine) + exp(nat_infection)
+      # instead of adding - want the maximum of the two
+      nat <- max(nat_vaccine, nat_infection)
       nat <- log(nat)
       return(nat)
     }
