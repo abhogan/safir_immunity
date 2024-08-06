@@ -1,6 +1,6 @@
-Package: safir
-Title: Individual-Based Model of COVID Transmission
-Version: 0.6.0
+Package: safirimmunity
+Title: Individual-Based Model of COVID Transmission - with updated immunity
+Version: 0.6.1
 Authors@R: c(
             person(
                 given = "Sean L.",
