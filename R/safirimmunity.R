@@ -4,7 +4,7 @@
 #' safir is an individual-based simulation model of COVD-19 based on squire.
 #'
 #' @docType package
-#' @name safir
+#' @name safirimmunity
 #'
 #' @importFrom stats setNames
 #' @importFrom utils getFromNamespace
@@ -13,7 +13,7 @@
 
 ## usethis namespace: start
 #' @importFrom Rcpp sourceCpp
-#' @useDynLib safir
+#' @useDynLib safirimmunity
 ## usethis namespace: end
 NULL
 
