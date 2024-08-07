@@ -123,7 +123,7 @@ make_calculate_nat <- function(variables) {
       # add them for single effect
       #nat <- exp(nat_vaccine) + exp(nat_infection)
       # instead of adding - want the maximum of the two
-      nat <- max(nat_vaccine, nat_infection)
+      nat <- pmax(nat_vaccine, nat_infection)
       #nat <- log(nat)
       return(nat)
     }

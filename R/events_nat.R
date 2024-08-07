@@ -180,7 +180,7 @@ attach_event_listeners_independent_nat <- function(variables, events, parameters
       if (additive){
         new_nat <- current_nat + nat_boost
       } else {
-        new_nat <- max(current_nat, nat_boost)
+        new_nat <- pmax(current_nat, nat_boost)
       }
 
       # back to ln scale, and impose max value constraint
