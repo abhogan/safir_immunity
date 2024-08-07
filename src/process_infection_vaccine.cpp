@@ -69,7 +69,8 @@ Rcpp::XPtr<process_t> infection_process_vaccine_cpp_internal(
       std::vector<double> nat(index.size());
 
       for (auto i = 0u; i < index.size(); ++i) {
-        nat[i] = std::exp(nat_vaccine[i]) + std::exp(nat_infection[i]);
+        //nat[i] = std::exp(nat_vaccine[i]) + std::exp(nat_infection[i]);
+        nat[i] = std::max(std::exp(nat_vaccine[i]), std::exp(nat_infection[i]));
         nat[i] = std::log(nat[i]);
       }
 
