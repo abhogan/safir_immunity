@@ -1,4 +1,4 @@
-# **safir**
+# **safirimmunity**
 
 <!-- badges: start -->
 [![R build
